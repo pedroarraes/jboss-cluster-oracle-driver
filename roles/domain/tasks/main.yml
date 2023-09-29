@@ -1,0 +1,13 @@
+- name: Create Oracle Non-XA Driver in profile full-ha
+  shell: "{{ JBOSS_HOME }}/bin/jboss-cli.sh --connect --command='/profile=full-ha/subsystem=datasources/jdbc-driver=oracle:add(driver-name=oracle, driver-module-name=com.oracle, driver-class-name=oracle.jdbc.driver.OracleDriver)'"
+  register: oracle_driver
+
+- debug:
+    var: oracle_driver
+
+- name: Create Oracle XA Driver in profile full-ha
+  shell: "{{ JBOSS_HOME }}/bin/jboss-cli.sh --connect --command='/profile=full-ha/subsystem=datasources/jdbc-driver=oracle-xa:add(driver-name=oracle-xa, driver-module-name=com.oracle, driver-xa-datasource-class-name=oracle.jdbc.xa.client.OracleXADataSource)'"
+  register: oracle_xa_driver
+
+- debug:
+    var: oracle_xa_driver  

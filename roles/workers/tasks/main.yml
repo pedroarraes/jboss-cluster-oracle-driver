@@ -1,0 +1,20 @@
+- name: Create directory for Oracle driver
+  file:
+    path: "{{ JBOSS_HOME }}/modules/com/oracle/main"
+    state: directory
+    mode: 0755
+    owner: "{{ JBOSS_USER }}"
+
+- name: Download Oracle driver to host
+  get_url:
+    url: "{{ ORACLE_DRIVER_URL }}"
+    dest: "{{ JBOSS_HOME }}/modules/com/oracle/main/ojdbc.jar"
+    mode: 0644
+    owner: "{{ JBOSS_USER }}"
+
+- name: Create module.xml for Oracle driver
+  template:
+    src: files/module.xml
+    dest: "{{ JBOSS_HOME }}/modules/com/oracle/main/module.xml"
+    mode: 0644
+    owner: "{{ JBOSS_USER }}"

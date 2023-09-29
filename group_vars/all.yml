@@ -1,0 +1,5 @@
+ORACLE_DRIVER_VERSION: 8
+ORACLE_DRIVER_URL: https://download.oracle.com/otn-pub/otn_software/jdbc/233/ojdbc{{ ORACLE_DRIVER_VERSION }}.jar 
+JBOSS_HOME: /opt/jboss-eap-7.4
+JBOSS_USER: jboss-eap
+
